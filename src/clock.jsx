@@ -23,12 +23,22 @@ class Clock extends Component {
   render() {
     return (
       <div>
-        <div className="clock-days">{this.state.days} Days</div>
-        <div className="clock-hours">{this.state.hours} Hours</div>
-        <div className="clock-min">{this.state.minutes} Minutes</div>
-        <div className="clock-sec">{this.state.seconds} Seconds</div>
+        <div className="clock-days">{this.leading0(this.state.days)} Days</div>
+        <div className="clock-hours">
+          {this.leading0(this.state.hours)} Hours
+        </div>
+        <div className="clock-min">
+          {this.leading0(this.state.minutes)} Minutes
+        </div>
+        <div className="clock-sec">
+          {this.leading0(this.state.seconds)} Seconds
+        </div>
       </div>
     );
+  }
+
+  leading0(num) {
+    return num < 10 ? `0${num}` : num;
   }
 
   getTimeUntil(deadline) {
